@@ -9,14 +9,43 @@
 import UIKit
 
 class HomeViewController: UIViewController {
-
+  let  cellID = "cellId";
+    fileprivate var _tableView :UITableView!
+//    fileprivate var tableView: UITableView {
+//      get{
+//        
+//        if (_tableView != nil) {
+//            return _tableView!;
+//        }
+        //_tableView = UITableView();
+       // _tableView.separatorStyle = UITableViewCellSeparatorStyle.none;
+        
+     
+       // _tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellID);
+  
+//        _tableView.delegate = self;
+//        _tableView.dataSource = self;
+       // return _tableView!;
+//        }
+//    }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        _tableView = UITableView();
+        _tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellID);
+        
+        _tableView.delegate = self;
+        _tableView.dataSource = self;
+        
     self.navigationItem.title = "V2EX";
         
-        self.view.backgroundColor = UIColor.white
+        self.view.backgroundColor = UIColor.blue
         self.setupNavigationItem()
+        _tableView.separatorStyle = UITableViewCellSeparatorStyle.singleLine;
+        self.view.addSubview(self._tableView);
+        self._tableView.snp.makeConstraints{ (make) -> Void in
+            make.top.right.bottom.left.equalTo(self.view);
+        }
+        _tableView.reloadData()
     }
 
     func setupNavigationItem() {
@@ -32,4 +61,24 @@ class HomeViewController: UIViewController {
        
     }
 
+}
+
+
+extension HomeViewController:UITableViewDataSource,UITableViewDelegate {
+  
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 30;
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50;
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell  = tableView.dequeueReusableCell(withIdentifier:cellID, for: indexPath)
+        cell.backgroundColor = UIColor.red;
+        return cell;
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
+    
 }
