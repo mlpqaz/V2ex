@@ -10,6 +10,14 @@ import UIKit
 
 class HomeTopicListTableViewCell: UITableViewCell {
 
+     /// 节点信息label的圆角背景图
+    
+    fileprivate static var nodeBackgroundImage_Default = createImageWithColor(V2EXDefaultColor.sharedInstance.v2_NodeBackgroundColor, size: CGSize(width: 10, height: 20)).roundedCornerImageWithCornerRadius(2).stretchableImage(withLeftCapWidth: 3, topCapHeight: 3)
+    
+    fileprivate static var nodeBackgroundImage_Dark = createImageWithColor(V2EXDarkColor.sharedInstance.v2_NodeBackgroundColor, size: CGSize(width: 10, height: 20)).roundedCornerImageWithCornerRadius(2).stretchableImage(withLeftCapWidth: 3, topCapHeight: 3)
+    
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
