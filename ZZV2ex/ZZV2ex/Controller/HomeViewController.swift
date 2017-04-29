@@ -11,41 +11,36 @@ import UIKit
 class HomeViewController: UIViewController {
   let  cellID = "cellId";
     fileprivate var _tableView :UITableView!
-//    fileprivate var tableView: UITableView {
-//      get{
-//        
-//        if (_tableView != nil) {
-//            return _tableView!;
-//        }
-        //_tableView = UITableView();
+    fileprivate var tableView: UITableView {
+      get{
+        
+        if (_tableView != nil) {
+            return _tableView!;
+        }
+        _tableView = UITableView();
        // _tableView.separatorStyle = UITableViewCellSeparatorStyle.none;
         
      
-       // _tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellID);
-  
-//        _tableView.delegate = self;
-//        _tableView.dataSource = self;
-       // return _tableView!;
-//        }
-//    }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        _tableView = UITableView();
         _tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellID);
-        
+  
         _tableView.delegate = self;
         _tableView.dataSource = self;
-        
+        return _tableView!;
+        }
+    }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+       
     self.navigationItem.title = "V2EX";
         
         self.view.backgroundColor = UIColor.blue
         self.setupNavigationItem()
-        _tableView.separatorStyle = UITableViewCellSeparatorStyle.singleLine;
-        self.view.addSubview(self._tableView);
-        self._tableView.snp.makeConstraints{ (make) -> Void in
+     
+        self.view.addSubview(self.tableView);
+        self.tableView.snp.makeConstraints{ (make) -> Void in
             make.top.right.bottom.left.equalTo(self.view);
         }
-        _tableView.reloadData()
+       
     }
 
     func setupNavigationItem() {

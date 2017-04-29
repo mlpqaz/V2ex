@@ -20,6 +20,7 @@
 		8183D62D1EB43BC0006CAC54 /* NotificationMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8183D62C1EB43BC0006CAC54 /* NotificationMenuButton.swift */; };
 		8183D62F1EB4542E006CAC54 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8183D62E1EB4542E006CAC54 /* Media.xcassets */; };
 		8183D6321EB45576006CAC54 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8183D6311EB45576006CAC54 /* UIImage+Extension.swift */; };
+		8183D6341EB47DF3006CAC54 /* HomeTopicListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8183D6331EB47DF3006CAC54 /* HomeTopicListTableViewCell.swift */; };
 		C7B220233E8401D07788D054 /* Pods_ZZV2ex.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77DDB27C2AE169032D51EB59 /* Pods_ZZV2ex.framework */; };
 /* End PBXBuildFile section */
 
@@ -42,6 +43,7 @@
 		8183D62C1EB43BC0006CAC54 /* NotificationMenuButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationMenuButton.swift; sourceTree = "<group>"; };
 		8183D62E1EB4542E006CAC54 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		8183D6311EB45576006CAC54 /* UIImage+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		8183D6331EB47DF3006CAC54 /* HomeTopicListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTopicListTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				8183D62B1EB43BA7006CAC54 /* Control */,
+				8183D6331EB47DF3006CAC54 /* HomeTopicListTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 				8183D6321EB45576006CAC54 /* UIImage+Extension.swift in Sources */,
 				812E0CB01EB0DEB100381787 /* AppDelegate.swift in Sources */,
 				8183D6271EB431B4006CAC54 /* LeftViewController.swift in Sources */,
+				8183D6341EB47DF3006CAC54 /* HomeTopicListTableViewCell.swift in Sources */,
 				8183D6221EB42686006CAC54 /* V2EXColor.swift in Sources */,
 				8183D61E1EB42609006CAC54 /* V2EXNavigationController.swift in Sources */,
 				8183D62D1EB43BC0006CAC54 /* NotificationMenuButton.swift in Sources */,
