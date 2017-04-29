@@ -1,0 +1,6 @@
+framework module Pods_ZZV2ex {
+  umbrella header "Pods-ZZV2ex-umbrella.h"
+
+  export *
+  module * { export * }
+}
