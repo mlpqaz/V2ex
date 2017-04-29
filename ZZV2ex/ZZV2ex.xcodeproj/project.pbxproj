@@ -17,6 +17,9 @@
 		8183D6251EB429D7006CAC54 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8183D6241EB429D7006CAC54 /* HomeViewController.swift */; };
 		8183D6271EB431B4006CAC54 /* LeftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8183D6261EB431B4006CAC54 /* LeftViewController.swift */; };
 		8183D6291EB431CA006CAC54 /* RightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8183D6281EB431CA006CAC54 /* RightViewController.swift */; };
+		8183D62D1EB43BC0006CAC54 /* NotificationMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8183D62C1EB43BC0006CAC54 /* NotificationMenuButton.swift */; };
+		8183D62F1EB4542E006CAC54 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8183D62E1EB4542E006CAC54 /* Media.xcassets */; };
+		8183D6321EB45576006CAC54 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8183D6311EB45576006CAC54 /* UIImage+Extension.swift */; };
 		C7B220233E8401D07788D054 /* Pods_ZZV2ex.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77DDB27C2AE169032D51EB59 /* Pods_ZZV2ex.framework */; };
 /* End PBXBuildFile section */
 
@@ -36,6 +39,9 @@
 		8183D6241EB429D7006CAC54 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		8183D6261EB431B4006CAC54 /* LeftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftViewController.swift; sourceTree = "<group>"; };
 		8183D6281EB431CA006CAC54 /* RightViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightViewController.swift; sourceTree = "<group>"; };
+		8183D62C1EB43BC0006CAC54 /* NotificationMenuButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationMenuButton.swift; sourceTree = "<group>"; };
+		8183D62E1EB4542E006CAC54 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		8183D6311EB45576006CAC54 /* UIImage+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +77,7 @@
 		812E0CAE1EB0DEB100381787 /* ZZV2ex */ = {
 			isa = PBXGroup;
 			children = (
+				8183D62A1EB43BA7006CAC54 /* View */,
 				8183D6231EB42956006CAC54 /* Controller */,
 				8183D6201EB4264E006CAC54 /* Other */,
 				8183D61F1EB42643006CAC54 /* Common */,
@@ -84,6 +91,7 @@
 		8183D61F1EB42643006CAC54 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				8183D6301EB45554006CAC54 /* Extension */,
 				8183D6211EB42686006CAC54 /* V2EXColor.swift */,
 			);
 			path = Common;
@@ -92,6 +100,7 @@
 		8183D6201EB4264E006CAC54 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				8183D62E1EB4542E006CAC54 /* Media.xcassets */,
 				812E0CB31EB0DEB100381787 /* Main.storyboard */,
 				812E0CB61EB0DEB100381787 /* Assets.xcassets */,
 				812E0CB81EB0DEB100381787 /* LaunchScreen.storyboard */,
@@ -108,6 +117,30 @@
 				8183D6281EB431CA006CAC54 /* RightViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		8183D62A1EB43BA7006CAC54 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8183D62B1EB43BA7006CAC54 /* Control */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8183D62B1EB43BA7006CAC54 /* Control */ = {
+			isa = PBXGroup;
+			children = (
+				8183D62C1EB43BC0006CAC54 /* NotificationMenuButton.swift */,
+			);
+			path = Control;
+			sourceTree = "<group>";
+		};
+		8183D6301EB45554006CAC54 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				8183D6311EB45576006CAC54 /* UIImage+Extension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		8836F4748AF66AE9C731E9BA /* Pods */ = {
@@ -192,6 +225,7 @@
 			files = (
 				812E0CBA1EB0DEB100381787 /* LaunchScreen.storyboard in Resources */,
 				812E0CB71EB0DEB100381787 /* Assets.xcassets in Resources */,
+				8183D62F1EB4542E006CAC54 /* Media.xcassets in Resources */,
 				812E0CB51EB0DEB100381787 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -254,10 +288,12 @@
 				8183D6251EB429D7006CAC54 /* HomeViewController.swift in Sources */,
 				8183D6291EB431CA006CAC54 /* RightViewController.swift in Sources */,
 				812E0CB21EB0DEB100381787 /* ViewController.swift in Sources */,
+				8183D6321EB45576006CAC54 /* UIImage+Extension.swift in Sources */,
 				812E0CB01EB0DEB100381787 /* AppDelegate.swift in Sources */,
 				8183D6271EB431B4006CAC54 /* LeftViewController.swift in Sources */,
 				8183D6221EB42686006CAC54 /* V2EXColor.swift in Sources */,
 				8183D61E1EB42609006CAC54 /* V2EXNavigationController.swift in Sources */,
+				8183D62D1EB43BC0006CAC54 /* NotificationMenuButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
