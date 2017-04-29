@@ -15,6 +15,8 @@
 		8183D61E1EB42609006CAC54 /* V2EXNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8183D61D1EB42609006CAC54 /* V2EXNavigationController.swift */; };
 		8183D6221EB42686006CAC54 /* V2EXColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8183D6211EB42686006CAC54 /* V2EXColor.swift */; };
 		8183D6251EB429D7006CAC54 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8183D6241EB429D7006CAC54 /* HomeViewController.swift */; };
+		8183D6271EB431B4006CAC54 /* LeftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8183D6261EB431B4006CAC54 /* LeftViewController.swift */; };
+		8183D6291EB431CA006CAC54 /* RightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8183D6281EB431CA006CAC54 /* RightViewController.swift */; };
 		C7B220233E8401D07788D054 /* Pods_ZZV2ex.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77DDB27C2AE169032D51EB59 /* Pods_ZZV2ex.framework */; };
 /* End PBXBuildFile section */
 
@@ -32,6 +34,8 @@
 		8183D61D1EB42609006CAC54 /* V2EXNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = V2EXNavigationController.swift; sourceTree = "<group>"; };
 		8183D6211EB42686006CAC54 /* V2EXColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = V2EXColor.swift; sourceTree = "<group>"; };
 		8183D6241EB429D7006CAC54 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		8183D6261EB431B4006CAC54 /* LeftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftViewController.swift; sourceTree = "<group>"; };
+		8183D6281EB431CA006CAC54 /* RightViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +104,8 @@
 			isa = PBXGroup;
 			children = (
 				8183D6241EB429D7006CAC54 /* HomeViewController.swift */,
+				8183D6261EB431B4006CAC54 /* LeftViewController.swift */,
+				8183D6281EB431CA006CAC54 /* RightViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -246,8 +252,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				8183D6251EB429D7006CAC54 /* HomeViewController.swift in Sources */,
+				8183D6291EB431CA006CAC54 /* RightViewController.swift in Sources */,
 				812E0CB21EB0DEB100381787 /* ViewController.swift in Sources */,
 				812E0CB01EB0DEB100381787 /* AppDelegate.swift in Sources */,
+				8183D6271EB431B4006CAC54 /* LeftViewController.swift in Sources */,
 				8183D6221EB42686006CAC54 /* V2EXColor.swift in Sources */,
 				8183D61E1EB42609006CAC54 /* V2EXNavigationController.swift in Sources */,
 			);

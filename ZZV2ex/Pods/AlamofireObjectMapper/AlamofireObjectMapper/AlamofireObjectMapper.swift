@@ -69,9 +69,9 @@ extension DataRequest {
             }
             
             if let object = object {
-                _ = Mapper<T>(context: context, shouldIncludeNilValues: false).map(JSONObject: JSONToMap, toObject: object)
+                _ = Mapper<T>().map(JSONObject: JSONToMap, toObject: object)
                 return .success(object)
-            } else if let parsedObject = Mapper<T>(context: context, shouldIncludeNilValues: false).map(JSONObject: JSONToMap){
+            } else if let parsedObject = Mapper<T>(context: context).map(JSONObject: JSONToMap){
                 return .success(parsedObject)
             }
             
@@ -118,9 +118,10 @@ extension DataRequest {
                 JSONToMap = result.value
             }
             
-            if let parsedObject = Mapper<T>(context: context, shouldIncludeNilValues: false).mapArray(JSONObject: JSONToMap){
+            if let parsedObject = Mapper<T>(context: context).mapArray(JSONObject: JSONToMap){
                 return .success(parsedObject)
             }
+            
             
             let failureReason = "ObjectMapper failed to serialize response."
             let error = newError(.dataSerializationFailed, failureReason: failureReason)
