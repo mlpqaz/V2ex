@@ -70,6 +70,76 @@ class HomeTopicListTableViewCell: UITableViewCell {
        label.numberOfLines = 0
         return label
     }()
+    /// 装上面定义的那些元素的容器
+    var contentPanel:UIView = UIView()
+    
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    
+        super.init(style: style, reuseIdentifier: reuseIdentifier);
+        self.setup();
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setup() -> Void {
+        self.contentView.addSubview(self.contentPanel);
+        self.contentPanel.addSubview(self.avatarImageView);
+        self.contentPanel.addSubview(self.userNameLable);
+        self.contentPanel.addSubview(self.dateAndLastPostUserLabel);
+        self.contentPanel.addSubview(self.replyCountLabel);
+        self.contentPanel.addSubview(self.replyCountIconImageView);
+        self.contentPanel.addSubview(self.nodeBackgroundImageView);
+        self.contentPanel.addSubview(self.nodeNameLabel);
+        self.contentPanel.addSubview(self.topicTitleLabel);
+        
+        self.setupLayout()
+    }
+    
+    fileprivate func setupLayout(){
+        self.contentPanel.snp.makeConstraints{ (make) -> Void in
+            make.top.left.right.equalTo(self.contentView);
+        }
+        self.avatarImageView.snp.makeConstraints{ (make) -> Void in
+            make.left.top.equalTo(self.contentView).offset(12);
+            make.width.height.equalTo(35);
+            
+        }
+        self.userNameLable.snp.makeConstraints{ (make) -> Void in
+            make.left.equalTo(self.avatarImageView.snp.right).offset(10);
+            make.top.equalTo(self.avatarImageView);
+        }
+        self.dateAndLastPostUserLabel.snp.makeConstraints{ (make) -> Void in
+            make.bottom.equalTo(self.avatarImageView);
+            make.left.equalTo(self.userNameLable);
+        }
+        self.replyCountLabel.snp.makeConstraints{ (make) -> Void in
+            make.centerY.equalTo(self.userNameLable);
+            make.right.equalTo(self.contentPanel).offset(12);
+        }
+        self.replyCountIconImageView.snp.makeConstraints{ (make) -> Void in
+            make.centerY.equalTo(self.replyCountLabel);
+            make.width.height.equalTo(18);
+            make.right.equalTo(replyCountLabel.snp.left).offset(-2);
+        }
+        
+        self.nodeNameLabel.snp.makeConstraints{ (make) -> Void in
+            make.centerY.equalTo(self.replyCountLabel);
+            make.right.equalTo(self.replyCountIconImageView.snp.left).offset(-9)
+            make.bottom.equalTo(self.replyCountLabel).offset(1);
+            make.top.equalTo(self.replyCountLabel).offset(-1);
+        }
+        self.nodeBackgroundImageView.snp.makeConstraints{ (make) -> Void in
+          make.top.bottom.equalTo(self.nodeNameLabel)
+            make.left.equalTo(self.nodeNameLabel).offset(-5)
+            make.right.equalTo(self.nodeNameLabel).offset(5)
+        }
+        self.contentPanel.snp.makeConstraints{ (make) -> Void in
+            make.bottom.equalTo(self.contentView.snp.bottom).offset(-8);
+        }
+        
+    }
     
     
     override func awakeFromNib() {
