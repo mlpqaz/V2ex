@@ -9,6 +9,7 @@
 import UIKit
 import DrawerController
 
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -24,7 +25,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let centerNav = V2EXNavigationController(rootViewController: HomeViewController());
         
-      
+        let leftViewController = LeftViewController();
+        
+        let rightViewController = RightViewController();
+        let drawerController = DrawerController(centerViewController: centerNav, leftDrawerViewController: leftViewController, rightDrawerViewController: rightViewController);
+        
+        drawerController.maximumLeftDrawerWidth = 230;
+        drawerController.maximumRightDrawerWidth = 100;
+        
+        drawerController.openDrawerGestureModeMask = OpenDrawerGestureMode.panningCenterView
+        drawerController.closeDrawerGestureModeMask = CloseDrawerGestureMode.all;
+        self.window?.rootViewController = drawerController;
         
         
         return true
