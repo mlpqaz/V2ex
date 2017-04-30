@@ -68,4 +68,37 @@ class TopicListModel: NSObject{
         
     }
     
+    init(favoritesRootNode:JiNode) {
+        super.init()
+        self.avata = favoritesRootNode.xPath("./table/tr/td[1]/a[1]/img[@class='avatar']").first?["src"]
+        self.nodeName = favoritesRootNode.xPath("./table/tr/td[3]/span[2]/a[1]").first?.content
+        self.userName = favoritesRootNode.xPath("./table/tr/td[3]/span[2]/strong[1]/a").first?.content
+        
+        let node = favoritesRootNode.xPath("./table/tr/td[3]/span/a[1]").first
+        self.topicTitle = node?.content
+        var topicIdUrl = node?["href"];
+        
+        if var id = topicIdUrl {
+            if let range = id.range(of: "/t/") {
+                id.replaceSubrange(range, with: "");
+            }
+            if let range = id.range(of: "#") {
+               id = id.substring(to: range.lowerBound)
+                topicIdUrl = id
+            }
+        }
+        self.topicId = topicIdUrl
+        
+        let date = favoritesRootNode.xPath("./table/tr/td[3]/span[2]").first?.content
+        if let date = date {
+           let array = date.components(separatedBy: "•")
+            if array.count == 4 {
+              self.date = array[3].trimmingCharacters(in: NSCharacterSet.whitespaces)
+            }
+            
+        }
+        self.lastReplyUserName = favoritesRootNode.xPath("./table/tr/td[3]/span[2]/strong[2]/a[1]").first?.content
+        self.replies = favoritesRootNode.xPath("./table/tr/td[4]/a[1]").first?.content
+    }
+    
 }
