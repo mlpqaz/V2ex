@@ -21,8 +21,10 @@ class HomeViewController: UIViewController {
        // _tableView.separatorStyle = UITableViewCellSeparatorStyle.none;
         
      
-        _tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellID);
+       // _tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellID);
   
+        regClass(_tableView, cell: HomeTopicListTableViewCell.self)
+        
         _tableView.delegate = self;
         _tableView.dataSource = self;
         return _tableView!;
@@ -65,11 +67,12 @@ extension HomeViewController:UITableViewDataSource,UITableViewDelegate {
         return 30;
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50;
+        return 100;
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell  = tableView.dequeueReusableCell(withIdentifier:cellID, for: indexPath)
-        cell.backgroundColor = UIColor.red;
+        let cell = getCell(tableView, cell: HomeTopicListTableViewCell.self, indexPath: indexPath);
+        
+        cell.backgroundColor = UIColor.gray;
         return cell;
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
