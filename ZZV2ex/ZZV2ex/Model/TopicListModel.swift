@@ -101,4 +101,35 @@ class TopicListModel: NSObject{
         self.replies = favoritesRootNode.xPath("./table/tr/td[4]/a[1]").first?.content
     }
     
+    init(nodeRootNode:JiNode) {
+        super.init()
+        self.avata = nodeRootNode.xPath("./table/tr/td[1]/a[1]/img[@class='avatar']").first?["src"]
+        self.userName = nodeRootNode.xPath("./table/tr/td[3]/span[2]/strong").first?.content
+        let node = nodeRootNode.xPath("./table/tr/td[3]/span/a[1]").first
+        self.topicTitle = node?.content
+        var topicIdUrl = node?["href"];
+        if var id = topicIdUrl {
+            if let range = id.range(of: "/t/"){
+                id.replaceSubrange(range, with: "");
+        }
+            if let range = id.range(of: "#") {
+              id = id.substring(to: range.lowerBound)
+                topicIdUrl = id
+            }
+    }
+        self.topicId = topicIdUrl
+        self.hits = nodeRootNode.xPath("./table/tr/td[3]/span[last()]/text()").first?.content
+         if var hits = self.hits {
+        
+            hits = hits.substring(from: hits.index(hits.startIndex, offsetBy: 5))
+            self.hits = hits
+        }
+        var replies: String? = nil;
+        if let reply = nodeRootNode.xPath("./table/tr/td[4]/a[1]").first {
+          replies = reply.content
+        }
+        self.replies = replies
+    }
+
 }
+
