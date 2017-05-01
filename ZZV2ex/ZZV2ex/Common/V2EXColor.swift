@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import KVOController
 
 func colorWith255RGB (_ r: CGFloat , g: CGFloat, b: CGFloat) -> UIColor {
     return UIColor(red: r/255.0, green: g/255.0, blue: b/255.0, alpha: 255)
@@ -245,54 +246,86 @@ class V2EXDarkColor: NSObject,V2EXColorProtocol{
 
 }
 
-//class V2EXColor : NSObject {
-//   fileprivate static let STYLE_KEY = "styleKey"
-//    
-//    static let V2EXColorStyleDefault = "Default"
-//    static let V2EXColorStyleDark = "Dark"
-//    
-//    fileprivate static var _colors: V2EXColorProtocol?
-//    
-//    static var colors: V2EXColorProtocol {
-//        get{
-//            if let c = V2EXColor._colors{
-//              return c
-//
-//            }else{
-//              if V2EXColor.sharedInstance.style
-//            }
-//        }
-//    }
-//    
-//    dynamic var style:String
-//    static let sharedInstance = V2EXColor()
-//    fileprivate override init() {
-//     if let style =
-//    }
-//}
+class V2EXColor : NSObject {
+   fileprivate static let STYLE_KEY = "styleKey"
+    
+    static let V2EXColorStyleDefault = "Default"
+    static let V2EXColorStyleDark = "Dark"
+    
+    fileprivate static var _colors: V2EXColorProtocol?
+    
+    static var colors: V2EXColorProtocol {
+        get{
+            if let c = V2EXColor._colors{
+              return c
 
-//extension NSObject {
-//    fileprivate struct AssociatedKeys {
-//    static var thmemChanged = "thmemChanged"
-//    }
-//    
-//    public typealias ThemeChangedClosure = @convention(block) (_ style: String) -> Void
-//    var thmemChangedHandler: ThemeChangedClosure? {
-//        get {
-//            let closureObject: AnyObject? = objc_getAssociatedObject(self, &AssociatedKeys.thmemChanged) as AnyObject?
-//            guard closureObject != nil else {
-//              return nil
-//            }
-//            let closure = unsafeBitCast(closureObject, to: ThemeChangedClosure.self)
-//            return closure
-//        }
-//        set {
-//            guard let value = newValue else {
-//              return
-//            }
-//            let dealObject: AnyObject =  unsafeBitCast(value, to: AnyObject.self)
-//            objc_setAssociatedObject(self, &AssociatedKeys.thmemChanged, dealObject, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-//            
-//        }
-//    }
-//}
+            }else{
+                if V2EXColor.sharedInstance.style == V2EXColor.V2EXColorStyleDefault{
+                   return V2EXDefaultColor.sharedInstance
+                }else{
+                   return V2EXDarkColor.sharedInstance
+                 }
+            }
+        }
+        set{
+           V2EXColor._colors = newValue
+        }
+    }
+    
+    dynamic var style:String
+    static let sharedInstance = V2EXColor()
+    fileprivate override init() {
+        if let style = V2EXSetting.sharedInstance[V2EXColor.STYLE_KEY]{
+          
+            self.style = style
+        }
+        else {
+          self.style = V2EXColor.V2EXColorStyleDefault
+        }
+        super.init()
+    }
+    func setStyleAndSave(_ style: String){
+        if self.style == style {
+           return
+        }
+        if style == V2EXColor.V2EXColorStyleDefault {
+           V2EXColor.colors  = V2EXDefaultColor.sharedInstance
+        }
+        else{
+          V2EXColor.colors = V2EXDarkColor.sharedInstance
+        }
+        self.style = style
+        V2EXSetting.sharedInstance[V2EXColor.STYLE_KEY] = style
+    }
+    
+}
+
+extension NSObject {
+    fileprivate struct AssociatedKeys {
+    static var thmemChanged = "thmemChanged"
+    }
+    
+    public typealias ThemeChangedClosure = @convention(block) (_ style: String) -> Void
+    var thmemChangedHandler: ThemeChangedClosure? {
+        get {
+            let closureObject: AnyObject? = objc_getAssociatedObject(self, &AssociatedKeys.thmemChanged) as AnyObject?
+            guard closureObject != nil else {
+              return nil
+            }
+            let closure = unsafeBitCast(closureObject, to: ThemeChangedClosure.self)
+            return closure
+        }
+        set {
+            guard let value = newValue else {
+              return
+            }
+            let dealObject: AnyObject =  unsafeBitCast(value, to: AnyObject.self)
+            objc_setAssociatedObject(self, &AssociatedKeys.thmemChanged, dealObject, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            
+            self.kvoController.observe(V2EXColor.sharedInstance, keyPath: "style", options: [.initial,.new], block:  {[weak self] (nav,color,change) -> Void in
+             self?.thmemChangedHandler?(V2EXColor.sharedInstance.style)
+            }
+            )
+        }
+    }
+}
