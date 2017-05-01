@@ -244,3 +244,55 @@ class V2EXDarkColor: NSObject,V2EXColorProtocol{
     }
 
 }
+
+//class V2EXColor : NSObject {
+//   fileprivate static let STYLE_KEY = "styleKey"
+//    
+//    static let V2EXColorStyleDefault = "Default"
+//    static let V2EXColorStyleDark = "Dark"
+//    
+//    fileprivate static var _colors: V2EXColorProtocol?
+//    
+//    static var colors: V2EXColorProtocol {
+//        get{
+//            if let c = V2EXColor._colors{
+//              return c
+//
+//            }else{
+//              if V2EXColor.sharedInstance.style
+//            }
+//        }
+//    }
+//    
+//    dynamic var style:String
+//    static let sharedInstance = V2EXColor()
+//    fileprivate override init() {
+//     if let style =
+//    }
+//}
+
+//extension NSObject {
+//    fileprivate struct AssociatedKeys {
+//    static var thmemChanged = "thmemChanged"
+//    }
+//    
+//    public typealias ThemeChangedClosure = @convention(block) (_ style: String) -> Void
+//    var thmemChangedHandler: ThemeChangedClosure? {
+//        get {
+//            let closureObject: AnyObject? = objc_getAssociatedObject(self, &AssociatedKeys.thmemChanged) as AnyObject?
+//            guard closureObject != nil else {
+//              return nil
+//            }
+//            let closure = unsafeBitCast(closureObject, to: ThemeChangedClosure.self)
+//            return closure
+//        }
+//        set {
+//            guard let value = newValue else {
+//              return
+//            }
+//            let dealObject: AnyObject =  unsafeBitCast(value, to: AnyObject.self)
+//            objc_setAssociatedObject(self, &AssociatedKeys.thmemChanged, dealObject, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+//            
+//        }
+//    }
+//}

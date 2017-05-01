@@ -130,6 +130,14 @@ class TopicListModel: NSObject{
         }
         self.replies = replies
     }
+    
+//    func setupTitleLayout() {
+//        if let title = self.topicTitle {
+//            self.topicTitleAttributedString = NSMutableAttributedString(string:title,attributes: [NSFontAttributeName:v2Font(17),NSForegroundColorAttributeName:UIColor.red])
+//            self.topicTitleAttributedString?.yy_lineSpacing = 3
+//            
+//        }
+//    }
 
 }
 
