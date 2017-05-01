@@ -8,6 +8,9 @@
 
 import UIKit
 
+let SCREEN_WIDTH = UIScreen.main.bounds.size.width;
+let SCREEN_HEIGHT = UIScreen.main.bounds.size.height;
+
 
 func v2Font(_ fontSize: CGFloat) -> UIFont {
     return UIFont.systemFont(ofSize: fontSize);

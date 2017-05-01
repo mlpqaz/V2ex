@@ -41,6 +41,8 @@ class TopicListModel: NSObject{
         
         //
         
+        self.setupTitleLayout()
+        
         var topicIdUrl = node?["href"];
         if var id = topicIdUrl {
             if let range = id.range(of: "/t/") {
@@ -76,6 +78,9 @@ class TopicListModel: NSObject{
         
         let node = favoritesRootNode.xPath("./table/tr/td[3]/span/a[1]").first
         self.topicTitle = node?.content
+        
+        self.setupTitleLayout()
+        
         var topicIdUrl = node?["href"];
         
         if var id = topicIdUrl {
@@ -107,6 +112,9 @@ class TopicListModel: NSObject{
         self.userName = nodeRootNode.xPath("./table/tr/td[3]/span[2]/strong").first?.content
         let node = nodeRootNode.xPath("./table/tr/td[3]/span/a[1]").first
         self.topicTitle = node?.content
+        
+        self.setupTitleLayout()
+        
         var topicIdUrl = node?["href"];
         if var id = topicIdUrl {
             if let range = id.range(of: "/t/"){
@@ -131,13 +139,19 @@ class TopicListModel: NSObject{
         self.replies = replies
     }
     
-//    func setupTitleLayout() {
-//        if let title = self.topicTitle {
-//            self.topicTitleAttributedString = NSMutableAttributedString(string:title,attributes: [NSFontAttributeName:v2Font(17),NSForegroundColorAttributeName:UIColor.red])
-//            self.topicTitleAttributedString?.yy_lineSpacing = 3
-//            
-//        }
-//    }
+    func setupTitleLayout() {
+        if let title = self.topicTitle {
+            self.topicTitleAttributedString = NSMutableAttributedString(string:title,attributes: [NSFontAttributeName:v2Font(17),NSForegroundColorAttributeName:UIColor.red])
+            self.topicTitleAttributedString?.yy_lineSpacing = 3
+            
+            self.thmemChangedHandler = { [weak self] (style) -> Void in
+                if let str = self?.topicTitleAttributedString{
+                  str.yy_color = V2EXColor.colors.v2_TopicListTitleColor
+                    self?.topicTitleLayout = YYTextLayout(containerSize:CGSize(width: SCREEN_WIDTH - 24,height: 9999), text: str)
+                }
+            }
+        }
+    }
 
 }
 
