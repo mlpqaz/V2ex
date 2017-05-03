@@ -155,24 +155,43 @@ class TopicListModel: NSObject{
     }
 
 }
-//
-//extension TopicListModel {
-//    class func getTopicList (_ tab: String? = nil ,page: Int = 0, completionHandler: @escaping (V2ValueResponse<[TopicListModel]>) -> Void) -> Void{
-//        var params:[String:String] = [:]
-//        if let tab = tab {
-//           params["tab"] = tab
-//        }else
-//        {
-//           params["tab"] = "all"
-//        }
-//        
-//        var url = V2EXURL
-//        if params["tab"] == "all" && page > 0 {
-//          params.removeAll()
-//            params["p"] = "\(page)"
-//            url = V2EXURL + "recent"
-//        }
-//        
-//Alamofire.request(url, parameters: params, headers: MOBILE_CLIENT_HEADERS).response
-//    }
-//}
+
+extension TopicListModel {
+    class func getTopicList (_ tab: String? = nil ,page: Int = 0, completionHandler: @escaping (V2ValueResponse<[TopicListModel]>) -> Void) -> Void{
+        var params:[String:String] = [:]
+        if let tab = tab {
+           params["tab"] = tab
+        }else
+        {
+           params["tab"] = "all"
+        }
+        
+        var url = V2EXURL
+        if params["tab"] == "all" && page > 0 {
+          params.removeAll()
+            params["p"] = "\(page)"
+            url = V2EXURL + "recent"
+        }
+        
+        Alamofire.request(url, parameters: params, headers: MOBILE_CLIENT_HEADERS).responseJiHtml { (response) -> Void in
+            var resultArray:[TopicListModel] = []
+            if  let jiHtml = response.result.value{
+                if let aRootNode = jiHtml.xPath("//body/div[@id='Wrapper']/div[@class='content']/div[@class='box']/div[@class='cell item']"){
+                    for aNode in aRootNode {
+                        let topic = TopicListModel(rootNode:aNode)
+                        resultArray.append(topic);
+                    }
+                    
+                }
+                DispatchQueue.global().async {
+               
+                }
+                
+            }
+            
+            let t = V2ValueResponse<[TopicListModel]>(value:resultArray, success: response.result.isSuccess)
+            completionHandler(t);
+        }
+    }
+
+}

@@ -71,6 +71,19 @@ class HomeViewController: UIViewController {
           self.tableView.mj_footer.endRefreshing()
         }
         
+        TopicListModel.getTopicList(tab){
+            (response:V2ValueResponse<[TopicListModel]>) -> Void in
+            
+            if response.success {
+                
+                self.topicList = response.value
+                self.tableView.reloadData()
+                
+          
+                
+            }
+            self.tableView.mj_header.endRefreshing()
+        }
     }
     
 }
