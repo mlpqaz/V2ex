@@ -154,4 +154,7 @@ class TopicListModel: NSObject{
     }
 
 }
-
+//
+//extension TopicListModel {
+//    class func getTopicList (_ tab: String? = nil ,page: Int = 0, completionHandler: @escaping (V2ValueResponse))
+//}
