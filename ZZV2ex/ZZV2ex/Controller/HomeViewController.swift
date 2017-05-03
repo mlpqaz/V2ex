@@ -9,6 +9,11 @@
 import UIKit
 
 class HomeViewController: UIViewController {
+    
+    var topicList:Array<TopicListModel>?
+    var tab:String? = nil
+    var currentPage = 0
+    
   let  cellID = "cellId";
     fileprivate var _tableView :UITableView!
     fileprivate var tableView: UITableView {
@@ -64,15 +69,23 @@ class HomeViewController: UIViewController {
 extension HomeViewController:UITableViewDataSource,UITableViewDelegate {
   
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 30;
+        if let list = self.topicList{
+          return list.count
+        }
+        return 0;
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100;
+        let item = self.topicList![indexPath.row]
+        let titleHeight = item.topicTitleLayout?.textBoundingRect.size.height ?? 0
+        let height = 12 + 35 + 12 + titleHeight + 12 + 8
+        
+        return height;
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = getCell(tableView, cell: HomeTopicListTableViewCell.self, indexPath: indexPath);
         
-        cell.backgroundColor = UIColor.gray;
+        cell.bind(self.topicList![indexPath.row]);
+        
         return cell;
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

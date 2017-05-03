@@ -73,6 +73,8 @@ class HomeTopicListTableViewCell: UITableViewCell {
     /// 装上面定义的那些元素的容器
     var contentPanel:UIView = UIView()
     
+    var itemModel:TopicListModel?
+    
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
     
         super.init(style: style, reuseIdentifier: reuseIdentifier);
@@ -139,6 +141,23 @@ class HomeTopicListTableViewCell: UITableViewCell {
             make.bottom.equalTo(self.contentView.snp.bottom).offset(-8);
         }
         
+    }
+    
+    func superBind(_ model: TopicListModel) {
+        self.userNameLable.text = model.userName;
+        if let layout = model.topicTitleLayout {
+            if layout.text.string == self.itemModel?.topicTitleLayout?.text.string {
+            return
+            
+            }else{
+              self.topicTitleLabel.textLayout = layout
+            }
+        }
+    }
+    func bind(_ model:TopicListModel) {
+       self.superBind(model)
+        self.dateAndLastPostUserLabel.text = model.date
+        self.nodeNameLabel.text = model.nodeName
     }
     
     
