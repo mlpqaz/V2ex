@@ -45,6 +45,7 @@ class HomeViewController: UIViewController {
         self.view.backgroundColor = UIColor.blue
         self.setupNavigationItem()
      
+        
         self.view.addSubview(self.tableView);
         self.tableView.snp.makeConstraints{ (make) -> Void in
             make.top.right.bottom.left.equalTo(self.view);
@@ -65,6 +66,13 @@ class HomeViewController: UIViewController {
        
     }
 
+    func refresh(){
+        if self.tableView.mj_footer.isRefreshing(){
+          self.tableView.mj_footer.endRefreshing()
+        }
+        
+    }
+    
 }
 
 
