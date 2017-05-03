@@ -153,6 +153,12 @@ class HomeTopicListTableViewCell: UITableViewCell {
               self.topicTitleLabel.textLayout = layout
             }
         }
+        if let avata = model.avata {
+            self.avatarImageView.fin_setImageWithUrl(URL(string: "https:" + avata)!, placeholderImage: nil,imageModificationClosure: fin_defaultImageModification() )
+        }
+        self.replyCountLabel.text = model.replies;
+        self.itemModel = model
+        
     }
     func bind(_ model:TopicListModel) {
        self.superBind(model)
